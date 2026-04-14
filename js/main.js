@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNav();
     initScrollAnimations();
     initSmoothScroll();
+    initFAQ();
 });
 
 /* --- Navigation --- */
@@ -63,6 +64,26 @@ function initScrollAnimations() {
     });
 
     elements.forEach(el => observer.observe(el));
+}
+
+/* --- FAQ Accordion --- */
+function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-item.open').forEach(el => {
+                el.classList.remove('open');
+            });
+
+            // Toggle clicked
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        });
+    });
 }
 
 /* --- Smooth Scroll --- */

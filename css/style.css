@@ -623,7 +623,7 @@ h1, h2, h3, h4 {
 }
 
 .idealab-logo {
-    height: 40px;
+    height: 64px;
     width: auto;
     opacity: 0.7;
     transition: var(--transition);
@@ -1027,6 +1027,335 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .eligibility-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Methodology Section --- */
+.methodology {
+    background: var(--bg-primary);
+}
+
+.methodology-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.methodology-text h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.methodology-text p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.methodology-principles {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.methodology-principles li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.principle-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-subtle);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.principle-text h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    letter-spacing: 0;
+}
+
+.principle-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .methodology-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* --- Stats Section --- */
+.stats {
+    background: var(--bg-secondary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 32px 16px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    line-height: 1.4;
+}
+
+.stats-figures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.stats-figure {
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    text-align: center;
+}
+
+.stats-figure img {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 16px;
+    border-radius: var(--radius-sm);
+}
+
+.stats-figure figcaption {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .stat-number {
+        font-size: 36px;
+    }
+
+    .stats-figures {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-figure {
+        padding: 20px;
+    }
+}
+
+/* --- FAQ Section --- */
+.faq {
+    background: var(--bg-primary);
+}
+
+.faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: left;
+    letter-spacing: -0.01em;
+    transition: var(--transition);
+}
+
+.faq-question:hover {
+    color: var(--color-primary);
+}
+
+.faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    margin-left: 16px;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--text-tertiary);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.faq-icon::before {
+    width: 14px;
+    height: 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.faq-icon::after {
+    width: 2px;
+    height: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.faq-item.open .faq-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    opacity: 0;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1),
+                padding 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 300px;
+}
+
+.faq-answer p {
+    padding-bottom: 24px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* --- IRB Badge (Research page) --- */
+.irb-info {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    margin-top: 24px;
+}
+
+.irb-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 32px;
+}
+
+.irb-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.irb-field-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+}
+
+.irb-field-value {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .irb-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .irb-info {
+        padding: 20px 24px;
+    }
+}
+
+/* --- Research Findings --- */
+.findings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.finding-card {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 28px;
+}
+
+.finding-card img {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+}
+
+.finding-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0;
+}
+
+.finding-card p {
+    font-size: 14px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .findings-grid {
         grid-template-columns: 1fr;
     }
 }
