@@ -1363,9 +1363,10 @@ h1, h2, h3, h4 {
 /* --- Research Team --- */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
     margin-top: 24px;
+    max-width: 480px;
 }
 
 .team-member {
