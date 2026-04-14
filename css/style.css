@@ -1359,3 +1359,51 @@ h1, h2, h3, h4 {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Research Team --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.team-member {
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.team-role {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.team-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.team-affiliation {
+    font-size: 13px;
+    color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
