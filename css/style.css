@@ -1839,6 +1839,16 @@ body {
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
+/* App Store badge: invert to white-on-black in dark mode */
+[data-theme="dark"] .app-store-badge svg rect {
+    fill: #ffffff;
+}
+
+[data-theme="dark"] .app-store-badge svg text,
+[data-theme="dark"] .app-store-badge svg path {
+    fill: #000000;
+}
+
 /* Hero app icon — swap the outer ring to white-low-alpha */
 [data-theme="dark"] .hero-app-icon {
     box-shadow:
