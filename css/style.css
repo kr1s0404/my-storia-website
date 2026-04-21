@@ -309,10 +309,10 @@ h1, h2, h3, h4 {
 }
 
 .hero-app-icon {
-    width: clamp(96px, 12vw, 140px);
-    height: clamp(96px, 12vw, 140px);
-    border-radius: 28px;
-    box-shadow: 0 20px 45px -12px rgba(99, 102, 241, 0.35);
+    width: clamp(64px, 8vw, 100px);
+    height: clamp(64px, 8vw, 100px);
+    border-radius: 22px;
+    box-shadow: 0 18px 40px -14px rgba(99, 102, 241, 0.35);
     flex-shrink: 0;
 }
 
@@ -781,20 +781,18 @@ h1, h2, h3, h4 {
     }
 
     .hero-headline {
-        flex-direction: column;
-        gap: 20px;
+        gap: 16px;
         margin-bottom: 20px;
     }
 
     .hero-app-icon {
-        width: 96px;
-        height: 96px;
-        border-radius: 22px;
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
     }
 
     .hero-title {
         font-size: clamp(40px, 10vw, 56px);
-        text-align: center;
     }
 
     .hero-actions {
