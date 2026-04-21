@@ -920,26 +920,32 @@ h1, h2, h3, h4 {
 
 /* --- Page-level styles (Privacy, Terms, Research) --- */
 .page-hero {
-    padding: calc(var(--nav-height) + 80px) 24px 60px;
+    padding: calc(var(--nav-height) + 120px) 24px 96px;
     text-align: center;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
 .page-hero h1 {
-    font-size: clamp(36px, 5vw, 52px);
-    margin-bottom: 16px;
-    letter-spacing: -0.03em;
+    font-size: clamp(44px, 6.5vw, 72px);
+    margin-bottom: 18px;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    font-weight: 700;
 }
 
 .page-hero p {
-    color: var(--text-secondary);
-    font-size: 18px;
+    color: var(--text-tertiary);
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-weight: 500;
     max-width: 560px;
     margin: 0 auto;
 }
 
 .page-content {
-    padding: 60px 24px 120px;
+    padding: 80px 24px 140px;
 }
 
 .page-content .container {
@@ -947,9 +953,12 @@ h1, h2, h3, h4 {
 }
 
 .page-content h2 {
-    font-size: 28px;
-    margin: 48px 0 16px;
-    letter-spacing: -0.02em;
+    font-size: clamp(26px, 2.6vw, 32px);
+    margin: 64px 0 20px;
+    letter-spacing: -0.028em;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .page-content h2:first-child {
@@ -958,34 +967,44 @@ h1, h2, h3, h4 {
 
 .page-content h3 {
     font-size: 20px;
-    margin: 32px 0 12px;
+    margin: 36px 0 12px;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    color: var(--text-primary);
 }
 
 .page-content p {
     color: var(--text-secondary);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     line-height: 1.7;
+    font-size: 17px;
+    letter-spacing: -0.008em;
 }
 
 .page-content ul, .page-content ol {
     color: var(--text-secondary);
-    margin-bottom: 16px;
-    padding-left: 24px;
+    margin-bottom: 18px;
+    padding-left: 28px;
     line-height: 1.7;
+    font-size: 17px;
+    letter-spacing: -0.008em;
 }
 
 .page-content li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .page-content a {
     color: var(--color-primary);
     text-decoration: underline;
+    text-decoration-thickness: 1px;
     text-underline-offset: 3px;
+    transition: color 0.2s ease;
 }
 
 .page-content a:hover {
     color: var(--color-secondary);
+    text-decoration-thickness: 2px;
 }
 
 .page-content strong {
@@ -995,27 +1014,62 @@ h1, h2, h3, h4 {
 
 /* --- Research Page --- */
 .research-hero {
-    padding: calc(var(--nav-height) + 80px) 24px 60px;
+    padding: calc(var(--nav-height) + 120px) 24px 120px;
     text-align: center;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.research-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 18px 7px 14px;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.08);
+    border: 1px solid rgba(99, 102, 241, 0.18);
+    color: var(--color-primary);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    margin-bottom: 32px;
+}
+
+.research-chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
 }
 
 .research-hero h1 {
-    font-size: clamp(36px, 5vw, 52px);
-    margin-bottom: 16px;
-    letter-spacing: -0.03em;
+    font-size: clamp(48px, 8vw, 88px);
+    margin: 0 auto 24px;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    font-weight: 700;
+    max-width: 880px;
 }
 
 .research-hero p {
     color: var(--text-secondary);
-    font-size: 18px;
-    max-width: 600px;
+    font-size: clamp(18px, 2vw, 22px);
+    max-width: 640px;
     margin: 0 auto;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
 }
 
 .research-section {
-    padding: 60px 24px;
-    border-bottom: 1px solid var(--border);
+    padding: 104px 24px;
+    border-bottom: none;
+    background: var(--bg-primary);
+}
+
+.research-section--muted {
+    background: var(--bg-secondary);
 }
 
 .research-section:last-of-type {
@@ -1023,49 +1077,123 @@ h1, h2, h3, h4 {
 }
 
 .research-section .container {
-    max-width: 720px;
+    max-width: 820px;
 }
 
 .research-section h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    letter-spacing: -0.02em;
+    font-size: clamp(36px, 4.8vw, 56px);
+    margin-bottom: 28px;
+    letter-spacing: -0.038em;
+    line-height: 1.05;
+    font-weight: 700;
+}
+
+.research-section strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 .research-section p,
 .research-section li {
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.65;
+    font-size: 17px;
+    letter-spacing: -0.008em;
+}
+
+.research-section p + p {
+    margin-top: 18px;
 }
 
 .research-section ul {
-    padding-left: 24px;
-    margin-top: 12px;
+    padding-left: 0;
+    margin-top: 24px;
+    list-style: none;
 }
 
 .research-section li {
-    margin-bottom: 8px;
+    position: relative;
+    padding: 18px 22px 18px 44px;
+    margin-bottom: 10px;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(0,0,0,0.04);
 }
 
+.research-section--muted li {
+    background: var(--bg-primary);
+}
+
+.research-section li::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 28px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+/* --- Research CTA (dark capstone, blends into footer) --- */
 .research-cta-section {
-    padding: 80px 24px;
+    padding: 128px 24px 96px;
     text-align: center;
-    background: var(--bg-secondary);
+    background: var(--text-primary);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.research-cta-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.20) 0%, rgba(168, 85, 247, 0.07) 40%, transparent 70%);
+    pointer-events: none;
 }
 
 .research-cta-section .container {
-    max-width: 560px;
+    position: relative;
+    max-width: 640px;
 }
 
 .research-cta-section h2 {
-    font-size: 32px;
-    margin-bottom: 16px;
+    font-size: clamp(40px, 5.5vw, 60px);
+    margin-bottom: 20px;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    color: #fff;
+    font-weight: 700;
 }
 
 .research-cta-section p {
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 19px;
+    margin-bottom: 36px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.research-cta-section p[style] {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.research-cta-section .btn-primary {
+    background: #fff;
+    color: var(--text-primary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.research-cta-section .btn-primary:hover {
+    background: #fff;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(99, 102, 241, 0.35);
 }
 
 /* Eligibility cards */
@@ -1073,25 +1201,50 @@ h1, h2, h3, h4 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 32px;
+    counter-reset: elig;
 }
 
 .eligibility-item {
-    background: var(--bg-secondary);
-    border-radius: var(--radius-sm);
-    padding: 20px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
     text-align: left;
+    position: relative;
+    counter-increment: elig;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eligibility-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.12);
+}
+
+.eligibility-item::before {
+    content: counter(elig, decimal-leading-zero);
+    position: absolute;
+    top: 22px;
+    right: 28px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: 0.06em;
 }
 
 .eligibility-item h4 {
-    font-size: 15px;
+    font-size: 19px;
     font-weight: 600;
-    margin-bottom: 4px;
-    letter-spacing: 0;
+    margin-bottom: 8px;
+    letter-spacing: -0.018em;
+    color: var(--text-primary);
 }
 
 .eligibility-item p {
-    font-size: 14px;
+    font-size: 15px;
+    line-height: 1.55;
     margin: 0;
 }
 
@@ -1352,8 +1505,9 @@ h1, h2, h3, h4 {
 .irb-info {
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
-    padding: 28px 32px;
-    margin-top: 24px;
+    padding: 36px 40px;
+    margin-top: 32px;
+    border: 1px solid rgba(0,0,0,0.04);
 }
 
 .irb-info-grid {
@@ -1435,30 +1589,54 @@ h1, h2, h3, h4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-    margin-top: 24px;
+    margin-top: 32px;
 }
 
 .team-member {
-    background: var(--bg-secondary);
-    border-radius: var(--radius-sm);
-    padding: 24px 20px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 32px 20px 28px;
     text-align: center;
+    border: 1px solid rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+                box-shadow 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.team-member::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient);
+    opacity: 0.7;
+}
+
+.team-member:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.12);
 }
 
 .team-role {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 12px;
     color: var(--color-primary);
     margin-bottom: 8px;
 }
 
 .team-name {
-    font-size: 17px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    letter-spacing: -0.018em;
 }
 
 .team-affiliation {
