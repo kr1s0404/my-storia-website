@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mystoria — Personalized Social Stories for Your Child</title>
     <meta name="description" content="Mystoria creates personalized social stories that help autistic children navigate daily routines with confidence and joy.">
+    <link rel="canonical" href="https://my-storia.com/">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Mystoria — Personalized Social Stories">
@@ -28,6 +29,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://my-storia.com/#organization",
+          "name": "Mystoria",
+          "url": "https://my-storia.com",
+          "logo": "https://my-storia.com/images/app-icon.png",
+          "description": "Mystoria creates personalized social stories that help autistic children navigate daily routines with confidence and joy."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://my-storia.com/#website",
+          "url": "https://my-storia.com",
+          "name": "Mystoria",
+          "publisher": { "@id": "https://my-storia.com/#organization" },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "MobileApplication",
+          "name": "Mystoria",
+          "applicationCategory": "EducationalApplication",
+          "operatingSystem": "iOS",
+          "description": "LLM-powered personalized social stories built on Carol Gray's methodology, designed for autistic children and their families.",
+          "image": "https://my-storia.com/images/app-icon.png",
+          "publisher": { "@id": "https://my-storia.com/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation -->
