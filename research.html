@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
     <title>Join Our Research Study — Mystoria</title>
     <meta name="description" content="Help shape the future of social stories for autistic children. Join the Mystoria research study at the University of Washington.">
     <link rel="canonical" href="https://my-storia.com/research.html">
@@ -23,6 +26,10 @@
                 <a href="/">Home</a>
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle color theme" type="button">
+                    <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 14.5A8 8 0 0 1 9.5 3.5a8 8 0 1 0 11 11z" fill="currentColor"/></svg>
+                    <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/><line x1="3" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/><line x1="5.6" y1="5.6" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.4" y2="18.4"/><line x1="5.6" y1="18.4" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.4" y2="5.6"/></g></svg>
+                </button>
             </div>
         </div>
     </nav>

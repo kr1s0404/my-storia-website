@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initFAQ();
     initParallax();
+    initTheme();
 });
 
 /* --- Navigation --- */
@@ -84,6 +85,26 @@ function initFAQ() {
                 item.classList.add('open');
             }
         });
+    });
+}
+
+/* --- Theme Toggle --- */
+function initTheme() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', () => {
+        const current = document.documentElement.dataset.theme || 'light';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+    });
+
+    // Sync with OS preference if user hasn't explicitly chosen
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener('change', (e) => {
+        if (localStorage.getItem('theme')) return;
+        document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
     });
 }
 
