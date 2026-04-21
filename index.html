@@ -23,10 +23,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts: SF Pro via system stack (Apple's own approach) -->
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -115,14 +112,17 @@
                 <a href="#features" class="btn btn-secondary">Learn More</a>
             </div>
         </div>
-        <div class="hero-visual">
+        <div class="hero-visual" data-parallax>
             <div class="phone-mockup">
                 <div class="phone-frame">
+                    <div class="phone-notch" aria-hidden="true"></div>
                     <div class="phone-screen">
-                        <img src="images/app-screenshot.png" alt="Mystoria app screenshot" onerror="this.parentElement.classList.add('placeholder')">
-                        <div class="phone-placeholder">
-                            <img src="images/app-icon.png" alt="Mystoria" class="phone-placeholder-icon-img">
-                            <span>App Preview</span>
+                        <div class="phone-splash">
+                            <div class="phone-splash-glow" aria-hidden="true"></div>
+                            <img src="images/app-icon.png" alt="" class="phone-splash-icon">
+                            <h3 class="phone-splash-title">Mystoria</h3>
+                            <p class="phone-splash-sub">Their story. Their way.</p>
+                            <div class="phone-splash-home" aria-hidden="true"></div>
                         </div>
                     </div>
                 </div>
