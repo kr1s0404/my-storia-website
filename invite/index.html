@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Invitation — Mystoria</title>
+    <meta name="description" content="Open your Mystoria collaboration invitation.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="/images/app-icon.png" alt="Mystoria" class="nav-logo-img">
+                Mystoria
+            </a>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <h1 id="invite-heading">Invitation</h1>
+        <p id="invite-subtitle">Loading your invitation…</p>
+    </section>
+
+    <section class="page-content">
+        <div class="container" style="max-width: 560px;">
+            <div id="invite-body" style="display:none;">
+                <p>You've been invited to collaborate on a story in Mystoria.</p>
+
+                <p style="margin-top: 28px;">
+                    <a id="open-app-link" class="btn btn-primary" href="#" style="display:inline-block;">Open in Mystoria</a>
+                </p>
+
+                <p style="margin-top: 32px; color: var(--text-secondary);">
+                    Don't have the app yet? Mystoria is launching on the App Store soon. Come back here after you install it, or enter the code below manually in the app.
+                </p>
+
+                <div style="margin-top: 24px; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                    <p style="font-size: 13px; margin: 0 0 6px; color: var(--text-secondary);">Invitation code</p>
+                    <code id="invite-token" style="font-size: 16px; font-family: 'SF Mono', Menlo, monospace; word-break: break-all;"></code>
+                </div>
+            </div>
+
+            <div id="invite-missing" style="display:none;">
+                <p>This invitation link looks incomplete.</p>
+                <p>Please open the original email and tap the <strong>Accept Invitation</strong> button, or copy the invitation code and enter it manually in the Mystoria app.</p>
+                <p style="margin-top: 32px;"><a href="/" class="btn btn-primary" style="display:inline-block;">Back to Mystoria</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2026 Mystoria. A research project at the University of Washington Bothell.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            // Extract token from path: /invite/{token}
+            // On GitHub Pages, /invite/{token} routes here through 404.html, but this
+            // page is also reachable at /invite/?token=... or /invite/#... as a
+            // manual fallback.
+            function extractToken() {
+                var path = window.location.pathname.replace(/\/+$/, '');
+                var parts = path.split('/');
+                if (parts.length >= 3 && parts[1] === 'invite' && parts[2]) {
+                    return decodeURIComponent(parts[2]);
+                }
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('token')) return params.get('token');
+                if (window.location.hash && window.location.hash.length > 1) {
+                    return decodeURIComponent(window.location.hash.slice(1));
+                }
+                return null;
+            }
+
+            var token = extractToken();
+            var subtitle = document.getElementById('invite-subtitle');
+            var body = document.getElementById('invite-body');
+            var missing = document.getElementById('invite-missing');
+            var tokenEl = document.getElementById('invite-token');
+            var openLink = document.getElementById('open-app-link');
+
+            if (token) {
+                subtitle.textContent = 'You\'ve been invited to collaborate on a story.';
+                tokenEl.textContent = token;
+                openLink.href = 'mystoria://invite/' + encodeURIComponent(token);
+                body.style.display = '';
+            } else {
+                subtitle.textContent = 'This invitation link looks incomplete.';
+                missing.style.display = '';
+            }
+        })();
+    </script>
+</body>
+</html>

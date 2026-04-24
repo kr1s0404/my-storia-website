@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["46U3CJ7CE5.IDEA-Lab.SocialStoryStudio"],
+        "components": [
+          {
+            "/": "/invite/*",
+            "comment": "Collaboration invitation deep links"
+          }
+        ]
+      }
+    ]
+  }
+}

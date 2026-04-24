@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){try{var t=localStorage.getItem('theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}catch(e){}})();</script>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+    <title>Not Found — Mystoria</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <img src="/images/app-icon.png" alt="Mystoria" class="nav-logo-img">
+                Mystoria
+            </a>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <h1 id="page-heading">Page not found</h1>
+        <p id="page-subtitle">We couldn't find the page you were looking for.</p>
+    </section>
+
+    <section class="page-content">
+        <div class="container" style="max-width: 560px;">
+            <!-- Default 404 content -->
+            <div id="default-404">
+                <p>The link may be out of date, or the page may have been moved.</p>
+                <p style="margin-top: 32px;"><a href="/" class="btn btn-primary" style="display:inline-block;">Back to Mystoria</a></p>
+            </div>
+
+            <!-- Invite fallback content -->
+            <div id="invite-body" style="display:none;">
+                <p>You've been invited to collaborate on a story in Mystoria.</p>
+
+                <p style="margin-top: 28px;">
+                    <a id="open-app-link" class="btn btn-primary" href="#" style="display:inline-block;">Open in Mystoria</a>
+                </p>
+
+                <p style="margin-top: 32px; color: var(--text-secondary);">
+                    Don't have the app yet? Mystoria is launching on the App Store soon. Come back here after you install it, or enter the code below manually in the app.
+                </p>
+
+                <div style="margin-top: 24px; padding: 16px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                    <p style="font-size: 13px; margin: 0 0 6px; color: var(--text-secondary);">Invitation code</p>
+                    <code id="invite-token" style="font-size: 16px; font-family: 'SF Mono', Menlo, monospace; word-break: break-all;"></code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+                <p>&copy; 2026 Mystoria. A research project at the University of Washington Bothell.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            // GitHub Pages serves this file for any missing path with status 404.
+            // For /invite/{token} URLs we swap in a friendly invitation UI instead
+            // of the generic 404 body.
+            var match = window.location.pathname.match(/^\/invite\/([^\/]+)\/?$/);
+            if (!match) return;
+
+            var token = decodeURIComponent(match[1]);
+            document.getElementById('default-404').style.display = 'none';
+            document.getElementById('page-heading').textContent = 'Invitation';
+            document.getElementById('page-subtitle').textContent = 'You\'ve been invited to collaborate on a story.';
+            document.getElementById('invite-token').textContent = token;
+            document.getElementById('open-app-link').href = 'mystoria://invite/' + encodeURIComponent(token);
+            document.getElementById('invite-body').style.display = '';
+
+            // Also update page title so tab / share previews read correctly.
+            document.title = 'Invitation — Mystoria';
+        })();
+    </script>
+</body>
+</html>
