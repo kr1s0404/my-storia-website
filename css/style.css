@@ -1839,13 +1839,17 @@ body {
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-/* App Store badge: invert to white-on-black in dark mode */
+/* App Store / TestFlight badge: invert to white-on-black in dark mode */
 [data-theme="dark"] .app-store-badge svg rect {
     fill: #ffffff;
 }
 
-[data-theme="dark"] .app-store-badge svg text,
-[data-theme="dark"] .app-store-badge svg path {
+[data-theme="dark"] .app-store-badge svg text {
+    fill: #000000;
+}
+
+/* Keep the TestFlight brand-blue checkmark; invert any other badge glyph */
+[data-theme="dark"] .app-store-badge svg path:not([fill="#0D96F2"]) {
     fill: #000000;
 }
 
