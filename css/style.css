@@ -614,23 +614,10 @@ h1, h2, h3, h4 {
     line-height: 1.6;
 }
 
-/* --- Download --- */
+/* --- Get Notified --- */
 .download {
     background: var(--bg-primary);
     padding: var(--section-padding) 0;
-}
-
-.download-actions {
-    margin-top: 32px;
-}
-
-.app-store-badge {
-    display: inline-block;
-    transition: var(--transition);
-}
-
-.app-store-badge:hover {
-    transform: scale(1.05);
 }
 
 /* --- Footer --- */
@@ -1839,20 +1826,6 @@ body {
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
-/* App Store / TestFlight badge: invert to white-on-black in dark mode */
-[data-theme="dark"] .app-store-badge svg rect {
-    fill: #ffffff;
-}
-
-[data-theme="dark"] .app-store-badge svg text {
-    fill: #000000;
-}
-
-/* Keep the TestFlight brand-blue checkmark; invert any other badge glyph */
-[data-theme="dark"] .app-store-badge svg path:not([fill="#0D96F2"]) {
-    fill: #000000;
-}
-
 /* Hero app icon — swap the outer ring to white-low-alpha */
 [data-theme="dark"] .hero-app-icon {
     box-shadow:
@@ -1884,7 +1857,7 @@ body {
    ============================================================ */
 .notify-card {
     max-width: 560px;
-    margin: 56px auto 0;
+    margin: 0 auto;
     padding: 40px 40px 34px;
     background: var(--bg-secondary);
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -2029,7 +2002,6 @@ body {
 @media (max-width: 768px) {
     .notify-card {
         padding: 32px 24px 28px;
-        margin-top: 40px;
     }
 
     .notify-row {
