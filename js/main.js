@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFAQ();
     initParallax();
     initTheme();
+    initNotifyForm();
 });
 
 /* --- Navigation --- */
@@ -152,5 +153,84 @@ function initSmoothScroll() {
                 behavior: 'smooth'
             });
         });
+    });
+}
+
+/* --- Launch Notification Form --- */
+function initNotifyForm() {
+    const form = document.getElementById('notify-form');
+    if (!form) return;
+
+    // Apps Script Web App URL — see setup/google-apps-script.gs.
+    const ENDPOINT = 'https://script.google.com/macros/s/AKfycbydWkUAIRlUDjOfKYyaeF5NPQpGWskXolLqVMyFKeXXWhn9a-Hi5UAzOPxBbs1tcWg8/exec';
+
+    const nameInput = document.getElementById('notify-name');
+    const emailInput = document.getElementById('notify-email');
+    const research = document.getElementById('notify-research');
+    const status = document.getElementById('notify-status');
+    const button = form.querySelector('.notify-submit');
+    const honeypot = form.querySelector('.notify-hp');
+    const fields = [nameInput, emailInput, research, button];
+
+    const SUCCESS = "You're on the list! We'll email you when Mystoria launches.";
+
+    const setStatus = (msg, kind) => {
+        status.textContent = msg;
+        status.classList.remove('is-success', 'is-error');
+        if (kind) status.classList.add('is-' + kind);
+    };
+
+    const setDisabled = (state) => {
+        fields.forEach((el) => { if (el) el.disabled = state; });
+    };
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        // Honeypot: bots fill hidden fields. Show success but never submit.
+        if (honeypot && honeypot.value) {
+            setStatus(SUCCESS, 'success');
+            form.reset();
+            return;
+        }
+
+        if (!name) {
+            setStatus('Please enter your name.', 'error');
+            nameInput.focus();
+            return;
+        }
+
+        if (!email || !emailInput.checkValidity()) {
+            setStatus('Please enter a valid email address.', 'error');
+            emailInput.focus();
+            return;
+        }
+
+        setDisabled(true);
+        setStatus('Adding you to the list…', null);
+
+        try {
+            // Apps Script web apps don't return CORS headers, so we use
+            // no-cors: the request goes through but the response is opaque.
+            // A completed request is treated as success.
+            await fetch(ENDPOINT, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new URLSearchParams({
+                    name: name,
+                    email: email,
+                    research: research && research.checked ? 'yes' : 'no',
+                    source: 'my-storia.com'
+                })
+            });
+            setStatus(SUCCESS, 'success');
+            form.reset();
+        } catch (err) {
+            setStatus('Something went wrong. Please try again later.', 'error');
+            setDisabled(false);
+        }
     });
 }

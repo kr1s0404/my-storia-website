@@ -398,6 +398,24 @@
                     </a>
                 </div>
             </div>
+            <div class="notify-card animate-on-scroll">
+                <h3 class="notify-title">Know when Mystoria launches</h3>
+                <p class="notify-text">Mystoria is in TestFlight beta today. Add your name and email and we'll send a single message the day it arrives on the App Store. No newsletter, no spam.</p>
+                <form class="notify-form" id="notify-form" novalidate>
+                    <input type="text" name="name" id="notify-name" class="notify-input notify-input--full" placeholder="Your name" autocomplete="name" required aria-label="Your name">
+                    <div class="notify-row">
+                        <input type="email" name="email" id="notify-email" class="notify-input" placeholder="you@example.com" autocomplete="email" required aria-label="Email address">
+                        <button type="submit" class="btn btn-primary notify-submit">Notify me</button>
+                    </div>
+                    <label class="notify-check">
+                        <input type="checkbox" name="research" id="notify-research" value="yes">
+                        <span class="notify-check-text">I'd also like to hear about the UW Bothell user research study.<span class="notify-check-note">Sessions are in person in the Seattle area; participants receive a $40 gift card.</span></span>
+                    </label>
+                    <input type="text" name="company" class="notify-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <p class="notify-consent">We use your details to announce the Mystoria launch and, if you opt in above, to contact you about the research study. See our <a href="privacy.html">Privacy Policy</a>.</p>
+                    <p class="notify-status" id="notify-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
         </div>
     </section>
 
