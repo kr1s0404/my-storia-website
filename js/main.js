@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initSmoothScroll();
     initFAQ();
-    initParallax();
     initTheme();
     initNotifyForm();
 });
@@ -107,31 +106,6 @@ function initTheme() {
         if (localStorage.getItem('theme')) return;
         document.documentElement.dataset.theme = e.matches ? 'dark' : 'light';
     });
-}
-
-/* --- Scroll Parallax (hero visual) --- */
-function initParallax() {
-    const nodes = document.querySelectorAll('[data-parallax]');
-    if (!nodes.length) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    let ticking = false;
-    const update = () => {
-        const y = window.scrollY;
-        nodes.forEach(el => {
-            // Gentle rise as user scrolls: max ~-40px within first viewport
-            const shift = Math.max(-40, Math.min(0, -y * 0.08));
-            el.style.transform = `translate3d(0, ${shift}px, 0)`;
-        });
-        ticking = false;
-    };
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(update);
-            ticking = true;
-        }
-    }, { passive: true });
 }
 
 /* --- Smooth Scroll --- */
