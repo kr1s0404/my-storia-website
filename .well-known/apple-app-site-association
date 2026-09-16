@@ -3,7 +3,9 @@
     "apps": [],
     "details": [
       {
-        "appIDs": ["46U3CJ7CE5.com.mystoria.app"],
+        "appIDs": [
+          "46U3CJ7CE5.com.my-storia.app"
+        ],
         "components": [
           {
             "/": "/invite/*",
