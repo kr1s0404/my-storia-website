@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+# Admin data is protected separately by server-side authorization.
+Disallow: /admin/
 
 Sitemap: https://my-storia.com/sitemap.xml

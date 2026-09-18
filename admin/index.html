@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://wglzksmvctkveoozakky.supabase.co; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <title>Mystoria · Operations</title>
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="stylesheet" href="admin.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <aside class="sidebar">
+    <a class="brand" href="/"><img src="../images/app-icon.png" alt="" width="36" height="36"><span>Mystoria<small>Operations</small></span></a>
+    <nav aria-label="Reports" id="navigation" hidden>
+      <button type="button" data-view="overview" aria-current="page"><span aria-hidden="true">◫</span>Overview</button>
+      <button type="button" data-view="accounts"><span aria-hidden="true">◎</span>Accounts & costs</button>
+    </nav>
+    <div class="sidebar-bottom"><span class="private-label">Private workspace</span><a href="../privacy.html">Privacy policy ↗</a><button id="sign-out" type="button" class="text-button" hidden>Sign out</button></div>
+  </aside>
+  <main id="main">
+    <section id="login" class="login-layout">
+      <div class="login-card">
+        <p class="eyebrow">Mystoria operations</p>
+        <h1>A clearer view<br>of your product.</h1>
+        <p class="lede">Usage, subscriptions and generation costs in one place.</p>
+        <form id="sign-in-form">
+          <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required maxlength="254">
+          <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required maxlength="1024">
+          <button type="submit" class="primary">Sign in</button>
+        </form>
+        <p class="hint">Use the email and password for an authorized admin account. Signing in to Mystoria alone does not grant access.</p>
+        <p id="login-status" role="status" aria-live="polite"></p>
+      </div>
+      <div class="login-aside" aria-hidden="true"><div class="book book-back"></div><div class="book book-front"><span>M</span><span class="book-rule"></span><small>A story at a time.</small></div></div>
+    </section>
+    <section id="workspace" hidden>
+      <header class="workspace-header"><div><p class="eyebrow">Product health</p><h1 id="page-title">Overview</h1><p id="updated" class="muted">Choose a reporting window.</p></div><button id="refresh" class="secondary" type="button">Refresh data</button></header>
+      <form id="filters" class="filter-bar">
+        <label>Usage environment<select id="environment"><option value="production">Production</option><option value="development">Development</option></select></label>
+        <label>Reporting window<select id="period"><option value="7">Last 7 days</option><option value="30" selected>Last 30 days</option><option value="90">Last 90 days</option></select></label>
+        <span class="filter-note">UTC · API costs in USD</span>
+      </form>
+      <p id="report-status" class="status" role="status" aria-live="polite"></p>
+      <div id="report-content" hidden>
+        <section id="overview-view">
+          <div id="metrics" class="metrics"></div>
+          <div class="report-grid">
+            <section class="panel"><div class="panel-heading"><div><h2>From first open to first story</h2><p>Participating accounts first observed in this window.</p></div></div><div id="funnel" class="funnel"></div><p class="footnote">These are observed milestones, not a complete signup conversion funnel. Earlier activity and people who leave usage sharing off are not measured.</p></section>
+            <section class="panel"><div class="panel-heading"><div><h2>Coming back</h2><p>Only accounts with a complete follow-up window are included.</p></div></div><div id="retention" class="retention"></div><div id="community" class="small-summary"></div></section>
+          </div>
+          <section class="panel"><div class="panel-heading"><div><h2>Generation costs</h2><p>Recorded API estimates, including costs from failed requests.</p></div></div><div id="cost-summary" class="cost-summary"></div><div class="table-scroll"><table><thead><tr><th scope="col">Environment</th><th scope="col">Purchase type</th><th scope="col">Requests</th><th scope="col">Known estimate</th><th scope="col">Unknown costs</th></tr></thead><tbody id="cost-rows"></tbody></table></div><p class="footnote">Estimates are not invoices or profit. They exclude Apple fees, hosting and other operating costs. Missing estimates remain unknown.</p></section>
+          <section class="panel"><div class="panel-heading"><div><h2>Coverage & subscriptions</h2><p>Use these boundaries when interpreting the numbers.</p></div></div><div id="coverage" class="coverage"></div><details class="footnote"><summary>Measurement definitions</summary><div id="definitions"></div></details></section>
+        </section>
+        <section id="accounts-view" hidden>
+          <section class="panel"><div class="panel-heading accounts-heading"><div><h2>Account activity</h2><p>No names, emails, stories or photos appear in this report.</p></div><label>Find account<input id="account-search" type="search" placeholder="Account ID" maxlength="64" autocomplete="off"></label></div><p id="account-count" class="muted"></p><div class="table-scroll"><table><thead><tr><th scope="col">Account</th><th scope="col">First observed</th><th scope="col">Stories & reading</th><th scope="col">Templates saved</th><th scope="col">AI requests</th><th scope="col">Known estimate</th><th scope="col"><span class="sr-only">Details</span></th></tr></thead><tbody id="account-rows"></tbody></table></div><p id="account-limit" class="footnote"></p></section>
+        </section>
+      </div>
+    </section>
+    <noscript><p>Enable JavaScript to sign in to this private workspace.</p></noscript>
+  </main>
+  <dialog id="account-dialog"><div class="dialog-heading"><div><p class="eyebrow">Generation history</p><h2 id="account-title">Account</h2></div><button id="close-detail" class="secondary" type="button">Close</button></div><p id="detail-status" role="status" aria-live="polite"></p><div id="detail-body" hidden><div id="detail-summary" class="cost-summary"></div><h3>Latest requests · all provider environments</h3><div class="table-scroll"><table><thead><tr><th scope="col">Date · UTC</th><th scope="col">Operation</th><th scope="col">Model</th><th scope="col">Result</th><th scope="col">Duration</th><th scope="col">Estimate · USD</th></tr></thead><tbody id="request-rows"></tbody></table></div><p id="request-limit" class="footnote"></p></div></dialog>
+</body>
+</html>
